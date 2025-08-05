@@ -31,7 +31,7 @@ Transform this workflow:
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/autosell.git
+git clone https://github.com/Codehagen/autosell.git
 cd autosell
 
 # Install dependencies
@@ -164,13 +164,39 @@ The AI agent provides sophisticated pricing analysis:
 ```
 ├── app/
 │   ├── agent/page.tsx              # Main AI agent interface
-│   └── api/agent/create-listing/   # Agent workflow endpoint
+│   ├── api/
+│   │   ├── agent/                  # AI agent endpoints
+│   │   │   ├── analyze-image/      # Image analysis endpoint
+│   │   │   ├── create-listing/     # Main workflow orchestrator
+│   │   │   └── publish-listing/    # Publishing endpoint
+│   │   └── marketplace/            # Marketplace integrations
+│   ├── chat/page.tsx               # Chat interface
+│   └── layout.tsx                  # Root layout
+├── components/
+│   ├── agent/                      # Agent UI components
+│   │   ├── AgentUploadStep.tsx     # Image upload interface
+│   │   ├── AgentAnalysisStep.tsx   # Analysis results display
+│   │   └── shared/                 # Shared agent components
+│   └── ui/                         # shadcn/ui components
 ├── lib/
-│   ├── marketplace-agent.ts        # 5-step orchestrator
-│   ├── createListingDraftFromImage.ts # Vision analysis
-│   ├── finn-api.ts                 # FINN.no price validation
-│   └── image-utils.ts              # Image compression
-└── CLAUDE.md                       # Technical documentation
+│   ├── agent-core/                 # Core agent logic
+│   │   └── workflow-orchestrator.ts # Main orchestration engine
+│   ├── agent-tools/                # AI tool implementations
+│   │   ├── image-analyzer.ts       # Vision model integration
+│   │   ├── price-validator.ts      # FINN.no price validation
+│   │   ├── content-optimizer.ts    # Listing content generation
+│   │   └── amazon-analyzer.ts      # Amazon integration
+│   ├── agent-utils/                # Agent utilities
+│   ├── marketplace-agent.ts        # 7-step orchestrator
+│   ├── finn-api.ts                 # FINN.no API integration
+│   ├── amazon-api.ts               # Amazon SP-API integration
+│   └── image-utils.ts              # Client-side compression
+├── hooks/                          # Custom React hooks
+├── prisma/
+│   └── schema.prisma               # Database schema
+├── .env.example                    # Environment variables template
+├── CLAUDE.md                       # Technical documentation
+└── package.json                    # Dependencies and scripts
 ```
 
 ## 📊 Quality Indicators
