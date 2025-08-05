@@ -1,6 +1,7 @@
 "use client";
 
 import type React from "react";
+import { Suspense } from "react";
 import { useState, useEffect, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import {
@@ -64,7 +65,7 @@ const defaultSettings: ChatSettings = {
   quickResponses: true,
 };
 
-export default function ChatPage() {
+function ChatContent() {
   const searchParams = useSearchParams();
   const [listing, setListing] = useState<DemoListing>(defaultListing);
   const [settings, setSettings] = useState<ChatSettings>(defaultSettings);
@@ -793,5 +794,24 @@ export default function ChatPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function ChatPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+          <div className="text-center">
+            <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center mx-auto mb-4 animate-pulse">
+              <MessageCircle className="h-5 w-5 text-white" />
+            </div>
+            <p className="text-slate-600">Loading chat...</p>
+          </div>
+        </div>
+      }
+    >
+      <ChatContent />
+    </Suspense>
   );
 }
